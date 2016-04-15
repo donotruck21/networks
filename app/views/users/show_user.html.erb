@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+	*{
+		font-family: helvetica;
+		/*margin: 0 auto;*/
+	}
+
+	.container{
+		width: 850px;
+		/*height: 700px;*/
+		border: 1px solid black;
+		padding: 50px;
+	}
+	h2{
+		display: inline-block;
+		margin-right: 200px;
+	}
+	a{
+		font-size: 1.4em;
+	}
+</style>
+<body>
+	<div class="container">
+		<h2><%= @user.name %></h2>
+		<a href="/professional_profile" class="headtag">My Profile</a> - 
+		<a href="/logout" class="headtag">Logout</a>
+		<hr>
+
+		<h4><%= @user.description %></h4>
+	</div>
+</body>
+</html>

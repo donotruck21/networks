@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+	*{
+		font-family: helvetica;
+		margin: 0 auto;
+	}
+
+	.container{
+		width: 850px;
+		/*height: 700px;*/
+		border: 1px solid black;
+		padding: 50px;
+	}
+	.loginBox, .registerBox{
+		border: 2px solid black;
+		display: inline-block;
+		vertical-align: top;
+		padding-left: 15px;
+		padding-right: 15px;
+		height: 350px;
+		width: 350px;
+	}
+	.registerBox{
+		height: 400px;
+		margin-right: 30px;
+	}
+	.errors{
+		margin-top: 5px;
+		/*border: 1px solid black;*/
+		overflow-y: auto;
+		height:100px;
+	}
+</style>
+
+<body>
+	<div class="container">
+		<h1>Welcome to Networks!</h1><hr>
+		<div class="registerBox">
+			<h3>Register</h3><br>
+			<form action="/users/create" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<label>
+					Name: <input type="text" name="name">
+				</label><br>
+				<label>
+					Email: <input type="text" name="email">
+				</label><br>
+				<label>
+					Password: <input type="password" name="password" placeholder="*Must be at least 8 characters">
+				</label><br>
+				<label>
+					Confirm Password: <input type="password" name="password_confirmation">
+				</label><br>
+				<label>
+					Description: <br><textarea name="description"></textarea>
+				</label><br>
+				<input type="submit" value="Register" class="btn btn-success">
+			</form>
+		</div>
+
+		<div class="loginBox">
+			<h3>Log In</h3><br>
+			<form action="/login" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<label>
+					Email: <input type="text" name="email">
+				</label><br>
+				<label>
+					Password: <input type="password" name="password">
+				</label><br><br>
+				<input type="submit" value="Log In" class="btn btn-success">
+			</form><br>
+			<p style="color:red"><%= flash[:email] %></p>
+		</div>
+
+
+		<div class="errors">
+			<% flash[:errors].each { |error| %>
+				<p style="color:red"><%= error %></p>
+			<% } if flash[:errors] %>
+		</div>
+	</div>
+</body>
+</html>

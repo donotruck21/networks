@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+	*{
+		font-family: helvetica;
+		/*margin: 0 auto;*/
+	}
+
+	.container{
+		width: 850px;
+		/*height: 700px;*/
+		border: 1px solid black;
+		padding: 50px;
+	}
+	h3{
+		display: inline-block;
+		margin-right: 100px;
+	}
+	.headtag{
+		font-size: 1.4em;
+	}
+	table{
+    	margin-top: 30px;
+    	margin-bottom: 30px;
+    }
+    table, th, td {
+    	border: 2px solid black;
+    	border-collapse: collapse;
+	}
+	th, td {
+	    padding-left: 20px;
+	    padding-right: 20px;
+	    padding-top: 5px;
+	    padding-bottom: 5px;
+	    text-align: left;    
+	}
+	thead{
+		background-color: #E6E6E6;
+	}
+</style>
+<body>
+	<div class="container">
+		<h3>Users You May Want To Connect With:</h3>
+		<a href="/professional_profile" class="headtag">My Profile</a> - 
+		<a href="/logout" class="headtag">Logout</a>
+		<table>
+			<thead>
+				<th>Name</th>
+				<th>Action</th>
+			</thead>
+
+			<tbody>
+				<% @all_users.each do |user| %>
+
+					<% if user.id != session[:user_id] %>
+					<tr>
+						<td><a href="users/<%= user.id %>"><%= user.o_name %></a></td>
+						<td><a href="invitations/<%= user.id %>">Connect</a></td>
+					</tr>
+					<% end %>
+
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
